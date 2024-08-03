@@ -1,0 +1,125 @@
+.createPost {
+  margin-top: 20px;
+
+  .header {
+    display: flex;
+    gap: 20px;
+
+    .create-post-left-part {
+      flex: 2;
+      border: 1px solid var(--border-color);
+      padding: 20px;
+      margin-top: 20px;
+
+      .Title {
+        .create-post-label {
+          display: block;
+          font-weight: bold;
+          font-size: 1.2rem;
+        }
+
+        .create-post-title {
+          margin-top: 10px;
+          width: 100%;
+          height: 30px;
+          padding: 20px 12px;
+          font-size: 1.1rem;
+          border-radius: 4px;
+          border: 1px solid var(--border-color);
+        }
+      }
+
+      .content {
+        .img-container {
+          margin-top: 20px;
+
+          .post-img {
+            width: 80%;
+            aspect-ratio: 16/9;
+            border-radius: 4px;
+          }
+        }
+
+        .labelImg {
+          display: inline-block;
+          background-color: var(--accent-color);
+          color: white;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          cursor: pointer;
+          margin-top: 10px;
+        }
+
+        .inputImg {
+          display: none;
+        }
+      }
+
+      .input-blog-container {
+        .input-blog {
+          .blog-label {
+            display: block;
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin-top: 10px;
+          }
+
+          .blog-para {
+            margin-top: 10px;
+            width: 100%;
+            height: 30vh;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 0.97rem;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+          }
+        }
+
+        .create-post-btn {
+          margin-top: 15px;
+        }
+      }
+    }
+
+    .create-post-right-part {
+      flex: 1;
+      margin-top: 20px;
+
+      .profile-card {
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        text-align: center;
+        padding: 40px;
+
+        .User-Img {
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+        }
+
+        .user-name,
+        .follower-info {
+          margin-top: 12px;
+        }
+
+        .follower-info {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 40px;
+        }
+
+        .follow,
+        .update-profile {
+          margin-top: 20px;
+          display: inline-block;
+        }
+      }
+    }
+  }
+}

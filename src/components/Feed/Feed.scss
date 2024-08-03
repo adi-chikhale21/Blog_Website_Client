@@ -1,0 +1,13 @@
+.Feed {
+  //   height: 100vh;
+  margin-top: 60px;
+  .container {
+    overflow: hidden;
+  }
+
+  .middle-part {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}

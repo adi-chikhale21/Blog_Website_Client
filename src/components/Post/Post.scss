@@ -1,0 +1,44 @@
+.post {
+  border-radius: 4px;
+
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    height: 60px;
+  }
+
+  .content {
+    img {
+      border-radius: 10px;
+      width: 100%;
+      height: 40%;
+    }
+  }
+
+  .footer {
+    margin-top: 10px;
+    .like {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+
+      .icon {
+        font-size: 1.5rem;
+      }
+    }
+
+    .caption {
+      margin-top: 12px;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .time-ago {
+      font-size: 1rem;
+      margin-top: 12px;
+      color: #aaa;
+    }
+  }
+}

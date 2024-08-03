@@ -1,0 +1,90 @@
+.SinglePost-left-part {
+  .SinglePost-title {
+    margin-top: 12px;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  .SinglePost-img {
+    margin-top: 20px;
+    img {
+      border-radius: 10px;
+      width: 100%;
+      height: 40%;
+    }
+  }
+
+  .likesCount {
+    margin-top: 10px;
+    .LikesCount-SinglePost {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+
+      .time-ago {
+        margin-top: 12px;
+        color: #aaa;
+      }
+    }
+    .icon {
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+  }
+  .description {
+    margin-top: 8px;
+    font-weight: normal;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+
+  .Singlepost-buttons {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    .SinglePost-deldiv {
+      .SinglePost-Delete {
+        background-color: red;
+      }
+    }
+  }
+}
+
+.comments {
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  overflow: hidden;
+  min-height: 0;
+  min-width: 0;
+
+  h2 {
+    margin-bottom: 10px;
+  }
+  .comment-box {
+    margin-bottom: 10px;
+
+    .comment {
+      width: 50%;
+      height: 200px;
+      padding: 10px;
+      border: 1px solid var(--border-color);
+    }
+
+    .cmt-btn {
+      display: block;
+      margin-top: 10px;
+    }
+  }
+}
+
+.allComment {
+  margin-bottom: 50px;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}

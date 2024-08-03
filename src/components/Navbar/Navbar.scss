@@ -1,0 +1,45 @@
+.Navbar {
+  height: 60px;
+  width: 100%;
+  border-bottom: 1px solid var(--border-color);
+  position: fixed;
+  background-color: white;
+  top: 0;
+
+  .container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .left-part-nav {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+
+      .create-post-nav {
+        margin-top: 10px;
+        font-size: 1.3rem;
+        cursor: pointer;
+      }
+
+      .create-post-nav:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .right-side {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+
+      .logout {
+        font-size: 1.8rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}
