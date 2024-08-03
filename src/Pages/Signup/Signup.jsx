@@ -1,16 +1,35 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Signup.scss";
+import { axiosClient } from "../../utils/axiosClient";
+import { KEY_ACCESS_TOKEN, setItems } from "../../utils/localStorageManager";
 
 function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const Navigate = useNavigate();
+
+  async function handleSignup(e) {
+    e.preventDefault();
+    try {
+      let response = await axiosClient.post("/auth/signup", {
+        name,
+        email,
+        password,
+      });
+
+      setItems(KEY_ACCESS_TOKEN, response.result.accessToken);
+      Navigate("/");
+    } catch (error) {
+      console.log(await error.message);
+    }
+  }
   return (
     <div className="Signup">
       <div className="Signup-box">
         <h1 className="heading">Signup</h1>
-        <form>
+        <form onSubmit={handleSignup}>
           <label htmlFor="name">Name</label>
           <input
             name="name"
@@ -45,6 +64,7 @@ function Signup() {
             type="submit"
             className=" primary-btn submit"
             value="Create an Account"
+            onSubmit={handleSignup}
           />
         </form>
 

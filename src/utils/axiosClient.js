@@ -12,10 +12,10 @@ let baseURL;
 if (import.meta.env.MODE === "production") {
   baseURL = import.meta.env.VITE_SERVER_BASE_URL;
 } else {
-  baseURL = "http://localhost:4000"; // Development base UR
+  baseURL = "http://localhost:8000/";
 }
 export const axiosClient = axios.create({
-  baseURL: import.meta.env.VITE_SERVER_BASE_URL,
+  baseURL,
   withCredentials: true,
 });
 
