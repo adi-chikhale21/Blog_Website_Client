@@ -13,6 +13,7 @@ import CreatePost from "./components/createPost/CreatePost";
 import UserIfNotLoggedIn from "./components/UserIfNotLoggedIn";
 import SinglePost from "./components/SinglePost.js/SinglePost";
 import toast, { Toaster } from "react-hot-toast";
+import EditPost from "./components/EditPost/EditPost";
 
 export const TOAST_SUCCESS = "toast_success";
 export const TOAST_FAILURE = "toast_failure";
@@ -55,6 +56,7 @@ function App() {
             <Route path="/Updateprofile" element={<UpdateProfile />} />
             <Route path="/createpost" element={<CreatePost />} />
             <Route path="/post/:postId" element={<SinglePost />} />
+            <Route path="/post/:postId/edit" element={<EditPost />} />
           </Route>
         </Route>
         <Route element={<UserIfNotLoggedIn />}>

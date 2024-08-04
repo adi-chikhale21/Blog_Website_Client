@@ -60,6 +60,10 @@ function SinglePost() {
     }
   }
 
+  function handleEditBtn() {
+    navigate(`/post/${post?._id}/edit`);
+  }
+
   return (
     <div className="Profile">
       <div className="container">
@@ -82,15 +86,22 @@ function SinglePost() {
             <p>{post?.description}</p>
           </div>
 
-          <div className="Singlepost-buttons">
-            <div>
-              <button className="primary-btn">Edit</button>
+          {isMyProfile && (
+            <div className="Singlepost-buttons">
+              <div>
+                <button className="primary-btn" onClick={handleEditBtn}>
+                  Edit
+                </button>
+              </div>
+              <div className="SinglePost-deldiv">
+                <button className="SinglePost-Delete primary-btn">
+                  Delete
+                </button>
+              </div>
             </div>
-            <div className="SinglePost-deldiv">
-              <button className="SinglePost-Delete primary-btn">Delete</button>
-            </div>
-          </div>
+          )}
         </div>
+
         <div className="right-part">
           <div className="profile-card">
             <img
