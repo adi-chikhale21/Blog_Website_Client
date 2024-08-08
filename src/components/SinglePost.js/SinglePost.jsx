@@ -50,7 +50,7 @@ function SinglePost() {
         comment: cmnt,
         postId: post._id,
       });
-      dispatch(getSinglePost({ postId: post._id }));
+      dispatch(getSinglePost({ postId: post?._id }));
       console.log(response);
     } catch (e) {
       console.log(e, "this is error");
@@ -62,6 +62,21 @@ function SinglePost() {
 
   function handleEditBtn() {
     navigate(`/post/${post?._id}/edit`);
+  }
+
+  async function handleDeleteBtn() {
+    try {
+      const response = await axiosClient.delete("/post", {
+        data: { postId: post?._id },
+      });
+      navigate("/");
+    } catch (e) {
+      console.log(await e.message);
+    }
+  }
+
+  function handleDeleteComm() {
+    dispatch(getSinglePost({ postId: post?._id }));
   }
 
   return (
@@ -94,7 +109,10 @@ function SinglePost() {
                 </button>
               </div>
               <div className="SinglePost-deldiv">
-                <button className="SinglePost-Delete primary-btn">
+                <button
+                  className="SinglePost-Delete primary-btn"
+                  onClick={handleDeleteBtn}
+                >
                   Delete
                 </button>
               </div>
@@ -154,7 +172,11 @@ function SinglePost() {
       </div>
       <div className="allComment container">
         {post.comments.map((comment) => (
-          <Comments comment={comment} />
+          <Comments
+            key={comment._id}
+            comment={comment}
+            onDelete={handleDeleteComm}
+          />
         ))}
       </div>
     </div>

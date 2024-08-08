@@ -18,7 +18,7 @@ function Signup() {
         email,
         password,
       });
-
+      console.log(response);
       setItems(KEY_ACCESS_TOKEN, response.result.accessToken);
       Navigate("/");
     } catch (error) {

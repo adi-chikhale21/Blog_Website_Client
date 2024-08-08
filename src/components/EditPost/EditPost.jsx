@@ -9,7 +9,7 @@ import {
   getUserProfile,
   likeAndUnlikePost,
 } from "../../Redux/Slices/postSlice";
-import { getSinglePost } from "../../Redux/Slices/singlePostSlice";
+import { getSinglePost, updatePost } from "../../Redux/Slices/singlePostSlice";
 import { IoIosHeartEmpty, IoMdHeart } from "react-icons/io";
 import { setLoading } from "../../Redux/Slices/appConfigSlice";
 import { axiosClient } from "../../utils/axiosClient";
@@ -54,7 +54,22 @@ function EditPost() {
     };
   }
 
-  function handleEditBtn() {}
+  const handleEditBtn = async () => {
+    try {
+      await dispatch(
+        updatePost({
+          postId: post?._id,
+          title,
+          postImg,
+          description,
+        })
+      ).unwrap();
+
+      navigate(`/post/${post._id}`);
+    } catch (error) {
+      console.error("Failed to update post: ", error);
+    }
+  };
 
   return (
     <div className="EditPost">

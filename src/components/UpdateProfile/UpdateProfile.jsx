@@ -4,6 +4,8 @@ import userImg from "../../assets/user.png";
 import { useDispatch, useSelector } from "react-redux";
 import userImage from "../../assets/user.png";
 import { updateMyProfile } from "../../Redux/Slices/appConfigSlice";
+import { useNavigate } from "react-router-dom";
+import { axiosClient } from "../../utils/axiosClient";
 
 function UpdateProfile() {
   const myProfile = useSelector((state) => state.appConfigReducer.myProfile);
@@ -11,6 +13,7 @@ function UpdateProfile() {
   const [bio, setBio] = useState("");
   const [userImg, setUserImg] = useState("");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setName(myProfile?.name || " ");
@@ -29,17 +32,31 @@ function UpdateProfile() {
     };
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    dispatch(
-      updateMyProfile({
-        name,
-        bio,
-        userImg,
-      })
-    );
+    try {
+      await dispatch(
+        updateMyProfile({
+          name,
+          bio,
+          userImg,
+        })
+      ).unwrap();
 
-    console.log(name, bio);
+      navigate(`/profile/${myProfile?._id}`);
+    } catch (error) {
+      console.error("Failed to update post: ", error);
+    }
+  }
+
+  async function handleDeleteUser() {
+    try {
+      const response = await axiosClient.delete("/user");
+      localStorage.clear();
+      navigate("/signup");
+    } catch (e) {
+      console.log(e.message);
+    }
   }
 
   return (
@@ -81,7 +98,12 @@ function UpdateProfile() {
               onSubmit={handleSubmit}
             />
           </form>
-          <button className="DeleteAccount primary-btn">Delete Account</button>
+          <button
+            className="DeleteAccount primary-btn"
+            onClick={handleDeleteUser}
+          >
+            Delete Account
+          </button>
         </div>
       </div>
     </div>

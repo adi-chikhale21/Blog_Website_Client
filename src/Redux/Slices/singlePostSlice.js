@@ -19,6 +19,21 @@ export const getSinglePost = createAsyncThunk(
   }
 );
 
+export const updatePost = createAsyncThunk(
+  "singlePost/updatePost",
+  async (body, thunkAPI) => {
+    try {
+      thunkAPI.dispatch(setLoading(true));
+      const response = await axiosClient.put("/post", body);
+      console.log(response.result.post);
+    } catch (e) {
+      return Promise.reject(e);
+    } finally {
+      thunkAPI.dispatch(setLoading(false));
+    }
+  }
+);
+
 export const addComment = createAsyncThunk(
   "singlePost/addComment",
   async (body, thunkAPI) => {
@@ -57,6 +72,13 @@ const singlePostSlice = createSlice({
           state.singlePost.comments.push(action.payload);
         } else {
           state.singlePost.comments = [action.payload];
+        }
+      })
+      .addCase(updatePost.fulfilled, (state, action) => {
+        if (state.singlePost) {
+          state.singlePost.title = action.payload?.title;
+          state.singlePost.description = action.payload?.description;
+          state.singlePost.image.url = action.payload?.image?.url;
         }
       });
   },

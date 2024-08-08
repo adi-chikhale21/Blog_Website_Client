@@ -6,4 +6,18 @@
     font-size: 1.2rem;
     font-weight: bold;
   }
+
+  .comment-msg {
+    font-size: 1rem;
+  }
+
+  .delete-btn {
+    padding: 8px 16px;
+    margin-top: 15px;
+    background-color: red;
+  }
+
+  .delete-btn:hover {
+    background-color: rgba(255, 0, 0, 0.7);
+  }
 }
